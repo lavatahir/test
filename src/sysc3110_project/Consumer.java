@@ -9,11 +9,13 @@ public class Consumer implements User {
 	private List<Document> liked_Documents;
 	private int payoff;
 	private Strategy strategy;
+	private List<User> followers;
 	
 	public Consumer(String name, String taste){
 		this.name = name;
 		this.taste = taste;
 		liked_Documents = new ArrayList<Document>();
+		followers = new ArrayList<User>();
 		payoff = 0;
 	}
 	@Override
@@ -49,13 +51,26 @@ public class Consumer implements User {
 	@Override
 	public void set_Strategy(Strategy s) {
 		// TODO Auto-generated method stub
-		
+		private List<User> followers;
 	}
 
 	@Override
 	public Graph graph_payoff(int time) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String getName() {
+		return this.name;
+	}
+	@Override
+	public String getTaste() {
+		return this.taste;
+	}
+	@Override
+	public void addFollower(User u) {
+		followers.add(u);
 	}
 
 }
