@@ -1,8 +1,12 @@
 package sysc3110_project;
 
-import java.util.List;
+import java.util.*;
 
 public interface Strategy {
-	public void perform_algorithm(List<Document> l, User me);
+	
+	@SuppressWarnings("unchecked")
+	public Set<Document> rankAlgo(Set<Document> s, int k);
+	
+	public void LFPopAlgo(Set<Document> l, User me);
 
 }

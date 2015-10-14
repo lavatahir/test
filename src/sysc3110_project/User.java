@@ -2,15 +2,45 @@ package sysc3110_project;
 
 import java.util.*;
 
-public interface User {
-	public void act();
-	public List<Document> search(List<Document> l);
-	public void addFollower(User u);
-	public void payoff();
-	public void liking_or_following(List<Document> l, Strategy s);
-	public List<Document> rank_Documents(List<Document> l, Strategy s);
-	public void set_Strategy(Strategy s);
-	public Graph graph_payoff(int time);
-	public String getName();
-	public String getTaste();
+public abstract class User  {
+	protected String name;
+	protected String taste;
+	protected Set<Document> likedDocuments;
+	protected Set<User> following;
+	protected Set<User> followers;
+	protected int payoff;
+		
+	public User(String name, String taste){
+		this.name = name;
+		this.taste = taste;
+		likedDocuments = new HashSet<Document>();
+		following = new HashSet<User>();
+		followers = new HashSet<User>();
+		payoff = 0;
+		
+	}
+	public void addFollower(User u){
+		followers.add(u);
+	}
+	public void addLikedDocuments(Document d )
+	{
+		likedDocuments.add(d);
+	}
+	public Set<User> getFollowers(){
+		return followers;
+	}
+	public Set<User> getFollowing(){
+		return following;
+	}
+	
+	//public void set_Strategy(Strategy s);
+	//public Graph graph_payoff(int time);
+	public String getName(){
+		return name;
+	}
+	public String getTaste(){
+		return taste;
+	}
+	public abstract void act(Set<Document> l, int k);
+	
 }
